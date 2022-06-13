@@ -5,28 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='./index.css '>
 </head>
 <body>
     <div>
         <h1>請上傳.pdf或.txt檔</h1>
         <h1>檔案大小上限5Mb、保留五分鐘</h1>
+        <form id="myform" method="POST" action="" enctype="multipart/form-data">
         <input type="file" id="file-uploader" accept=".pdf,.txt">
-        <p id="feedback"></p>
+        <input type="submit" id="file-submit">
+        </form>
+        <div id="feedback"></div>
     </div>
 </body>
 
 <script>
     const fileUploader = document.getElementById('file-uploader');
+    const feedback = document.getElementById('feedback');
 
     fileUploader.addEventListener('change', (event) => {
-        const files = event.target.files;
-        console.log('files', files);
+        const file = event.target.files[0];
+        console.log('file', file);
 
-        const feedback = document.getElementById('feedback');
-        const msg = `File ${files[0].name} uploaded successfully!`;
+        const size = file.size;
+        console.log('size', size);
+        let msg = '';
+
+        if (size > 1024 * 1024 * 5) {
+            msg = `<span style="color:red;">The allowed file size is 5MB. The file you are trying to upload is of ${returnFileSize(size)}</span>`;
+        } else {
+            msg = `<span style="color:green;"> A ${returnFileSize(size)} file has been uploaded successfully. </span>`;
+        }
         feedback.innerHTML = msg;
     });
+
+    function returnFileSize(number) {
+        if (number < 1024) {
+            return number + 'bytes';
+        } else if (number >= 1024 && number < 1048576) {
+            return (number / 1024).toFixed(2) + 'KB';
+        } else if (number >= 1048576) {
+            return (number / 1048576).toFixed(2) + 'MB';
+        }
+    }
 
 </script>
 </html>
