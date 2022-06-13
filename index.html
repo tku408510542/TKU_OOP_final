@@ -12,7 +12,7 @@
         <h1>檔案大小上限5Mb、保留五分鐘</h1>
         <form id="myform" method="POST" action="" enctype="multipart/form-data">
         <input type="file" id="file-uploader" accept=".pdf,.txt">
-        <input type="submit" id="file-submit">
+        <input type="submit" id="file-submit" disabled>
         </form>
         <div id="feedback"></div>
     </div>
@@ -31,8 +31,10 @@
         let msg = '';
 
         if (size > 1024 * 1024 * 5) {
+            document.getElementById("file-submit").setAttribute("disabled",true);
             msg = `<span style="color:red;">The allowed file size is 5MB. The file you are trying to upload is of ${returnFileSize(size)}</span>`;
         } else {
+            document.getElementById("file-submit").removeAttribute("disabled");
             msg = `<span style="color:green;"> A ${returnFileSize(size)} file has been uploaded successfully. </span>`;
         }
         feedback.innerHTML = msg;
