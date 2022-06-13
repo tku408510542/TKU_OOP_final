@@ -1,26 +1,99 @@
 html {
   height: 100%;
+  padding-top: 70px;
 }
 
-body {
-  background: #000000;
-  color: #ffffff;
-}
-
-a {
-  color: #61dafb;
-  text-decoration: none;
-}
-
-div {
-  display: flex;
+.box {
   justify-content: center;
   flex-direction: column;
   align-items: center;
   font-family: "Roboto Mono", monospace;
+  position: relative;
+  border: 2px solid rgb(22, 49, 107);
+  height: 300px;
+  width: 50%;
+  padding: 10px;
+}
+.box::before{
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transition: all 0.5s;
+  border: 1px solid rgb(22, 49, 107);
+  
+  top: -20px;
+  left: -20px;
+  border-right: none;
+  border-bottom: none
 }
 
-div#main UL LI {
+.box::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transition: all 0.5s;
+  border: 1px solid rgb(22, 49, 107);
+  
+  bottom: -20px;
+  right: -20px;
+  border-left: none;
+  border-top: none
+}
+
+.box:hover::after{
+    width: calc(100% + 20px + 17px);
+    height: calc(100% + 20px + 17px);
+}
+.box:hover::before {
+  width: calc(100% + 20px + 17px);
+  height: calc(100% + 20px + 17px);
+}
+
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  /* border: 1px solid #03A9F3; */
+}
+
+.subject{
+  text-align: center;
+}
+.wavy{
+  position: relative;
+}
+.wavy span{
+  position: relative;
+  display: inline-block;
+  color: rgb(22, 49, 107);
+  font-size: 3em;
+  font-family: fantasy;
+  font-weight:bold;
+  animation: animate 3s ease-in-out infinite;
+  animation-delay: calc(.1s*var(--i))
+}
+/* 文字波浪效果 */
+@keyframes animate{
+  0%{
+    transform: translateY(0px)
+  }
+  20%{
+    transform: translateY(-20px)
+  }
+  40%, 100%{
+    transform: translateY(0px)
+  }
+}
+
+h4{
+  color: #e0a570;
+}
+
+/* div#main UL LI {
   padding: 10px;
   font-size: 20px;
 }
@@ -36,7 +109,7 @@ div#container {
 div#drop-zone {
   height: 400px;
   width: 400px;
-  border: 2px dotted #ebebeb;
+  border: 2px dotted #f8f1f1;
 }
 
 div#drop-zone:hover {
@@ -49,4 +122,4 @@ div#content {
   border: 1px solid #FFF;
   margin-top: 15px;
   padding: 10px;
-}
+} */

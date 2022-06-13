@@ -5,15 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel='stylesheet' href='index.css'>
 </head>
 <body>
-    <div>
-        <h1>請上傳.pdf或.txt檔</h1>
-        <h1>檔案大小上限5Mb、保留五分鐘</h1>
-        <form id="myform" method="POST" action="" enctype="multipart/form-data">
-        <input type="file" id="file-uploader" accept=".pdf,.txt">
-        <input type="submit" id="file-submit" disabled>
-        </form>
+    <div class="subject" >
+        <div class="wavy" >
+            <span style="--i:1">檔</span>
+            <span style="--i:2">案</span>
+            <span style="--i:3">上</span>
+            <span style="--i:4">傳</span>
+            <span style="--i:5">、</span>
+            <span style="--i:6">下</span>
+            <span style="--i:7">載</span>
+            <span style="--i:8">、</span>
+            <span style="--i:9">刪</span>
+            <span style="--i:10">除</span>
+            <span style="--i:11">與</span>
+            <span style="--i:12">重</span>
+            <span style="--i:13">新</span>
+            <span style="--i:14">上</span>
+            <span style="--i:15">傳</span>
+        </div>
+    </div>
+    <div class="container"> 
+        <div class="box">
+            <h1>請上傳.pdf或.txt檔</h1>
+            <h4>檔案大小上限5Mb、保留五分鐘</h4>
+            <form id="myform" method="POST" action="" enctype="multipart/form-data">
+            <input type="file" id="file-uploader" accept=".pdf,.txt">
+            <input type="submit" id="file-submit" disabled>
+            </form>
+        </div>
         <div id="feedback"></div>
     </div>
 </body>
@@ -49,6 +71,5 @@
             return (number / 1048576).toFixed(2) + 'MB';
         }
     }
-
 </script>
 </html>
