@@ -9,48 +9,67 @@ html {
   align-items: center;
   font-family: "Roboto Mono", monospace;
   position: relative;
-  border: 2px solid rgb(22, 49, 107);
+  border: 1px solid rgb(22, 49, 107);
   height: 300px;
   width: 50%;
   padding: 10px;
 }
+
 .box::before{
   content: '';
   position: absolute;
-  width: 50px;
-  height: 50px;
-  transition: all 0.5s;
+  width: 100px;
+  height: 100px;
+  /* transition: all 0.5s; */
   border: 1px solid rgb(22, 49, 107);
   
   top: -20px;
   left: -20px;
   border-right: none;
-  border-bottom: none
+  border-bottom: none;
 }
 
 .box::after {
   content: "";
   position: absolute;
-  width: 50px;
-  height: 50px;
-  transition: all 0.5s;
+  width: 100px;
+  height: 100px;
+  /* transition: all 0.5s; */
   border: 1px solid rgb(22, 49, 107);
   
   bottom: -20px;
   right: -20px;
   border-left: none;
-  border-top: none
+  border-top: none;
+}
+
+@keyframes am1{
+  0%{
+    width: 100px;
+    height: 100px;
+  }
+  50%{
+    width: 1010px;
+    height: 360px;
+  }
+  100%{
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+.box:hover::before{
+  animation: am1 1s linear 1 alternate 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 
 .box:hover::after{
-    width: calc(100% + 20px + 17px);
-    height: calc(100% + 20px + 17px);
+  animation: am1 1s linear 1 alternate 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
-.box:hover::before {
-  width: calc(100% + 20px + 17px);
-  height: calc(100% + 20px + 17px);
-}
-
 
 .container{
   display: flex;
@@ -76,6 +95,7 @@ html {
   animation: animate 3s ease-in-out infinite;
   animation-delay: calc(.1s*var(--i))
 }
+
 /* 文字波浪效果 */
 @keyframes animate{
   0%{
