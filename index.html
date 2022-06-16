@@ -37,6 +37,10 @@
             <input type="button" id="file-reset" value="reset" onclick="ResetButton()">
             </form>
             <div id="feedback"></div>
+
+            <a id="file-download" download>
+                <div id="file-grid"></div>
+            </a>
         </div>
     </div>
     <div style="text-align:center;padding:1em 0;"> 
@@ -51,6 +55,10 @@
     const fileUploader = document.getElementById('file-uploader');
     const feedback = document.getElementById('feedback');
 
+    const reader = new FileReader();
+    const fileGrid = document.getElementById('file-grid');
+    const file_download = document.getElementById('file-download');
+
     fileUploader.addEventListener('change', (event) => {
         const file = event.target.files[0];
         console.log('file', file);
@@ -59,6 +67,7 @@
         console.log('size', size);
         let msg = '';
 
+        //limit 5MB
         if (size > 1024 * 1024 * 5) {
             document.getElementById("file-submit").setAttribute("disabled",true);
             msg = `<span style="color:red;">The allowed file size is 5MB. The file you are trying to upload is of ${returnFileSize(size)}</span>`;
@@ -67,6 +76,14 @@
             msg = `<span style="color:green;"> A ${returnFileSize(size)} file has been uploaded successfully. </span>`;
         }
         feedback.innerHTML = msg;
+
+        //file download
+        let file_msg=''
+        file_msg = file.name;
+        fileGrid.innerHTML = file_msg
+
+        file_download.href = URL.createObjectURL(file);
+        file_download.download = file.name;
     });
 
     function returnFileSize(number) {
