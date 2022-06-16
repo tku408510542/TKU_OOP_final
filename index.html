@@ -66,24 +66,28 @@
         const size = file.size;
         console.log('size', size);
         let msg = '';
+        let file_msg=''
 
         //limit 5MB
         if (size > 1024 * 1024 * 5) {
             document.getElementById("file-submit").setAttribute("disabled",true);
             msg = `<span style="color:red;">The allowed file size is 5MB. The file you are trying to upload is of ${returnFileSize(size)}</span>`;
+
+            //clear file download
+            file_msg=''
+
         } else {
             document.getElementById("file-submit").removeAttribute("disabled");
             msg = `<span style="color:green;"> A ${returnFileSize(size)} file has been uploaded successfully. </span>`;
+
+            //file download
+            file_msg = file.name;
+
+            file_download.href = URL.createObjectURL(file);
+            file_download.download = file.name;
         }
         feedback.innerHTML = msg;
-
-        //file download
-        let file_msg=''
-        file_msg = file.name;
         fileGrid.innerHTML = file_msg
-
-        file_download.href = URL.createObjectURL(file);
-        file_download.download = file.name;
     });
 
     function returnFileSize(number) {
@@ -98,8 +102,10 @@
 
     function ResetButton(){
         document.getElementById("myform").reset();
-        msg = ``
+        msg = ''
+        file_msg = ''
         feedback.innerHTML = msg;
+        fileGrid.innerHTML = file_msg
         document.getElementById("file-submit").setAttribute("disabled",true);
     }
 </script>
