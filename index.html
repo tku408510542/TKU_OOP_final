@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>File update</title>
     <link rel='stylesheet' href='index.css'>
 </head>
 <body>
@@ -34,6 +34,7 @@
             <form id="myform" method="POST" action="" enctype="multipart/form-data">
             <input type="file" id="file-uploader" accept=".pdf,.txt">
             <input type="submit" id="file-submit" disabled>
+            <input type="button" id="file-reset" value="reset" onclick="ResetButton()">
             </form>
             <div id="feedback"></div>
         </div>
@@ -76,6 +77,13 @@
         } else if (number >= 1048576) {
             return (number / 1048576).toFixed(2) + 'MB';
         }
+    }
+
+    function ResetButton(){
+        document.getElementById("myform").reset();
+        msg = ``
+        feedback.innerHTML = msg;
+        document.getElementById("file-submit").setAttribute("disabled",true);
     }
 </script>
 </html>
