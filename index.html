@@ -42,7 +42,7 @@
                 <div id="file-grid"></div>
             </a>
             <div id="timer">
-                60
+                0
             </div>
         </div>
     </div>
@@ -113,16 +113,21 @@
         feedback.innerHTML = msg;
         fileGrid.innerHTML = file_msg
         document.getElementById("file-submit").setAttribute("disabled",true);
+
+        //stop timer
+        clearInterval(timerId);
+        timer.innerHTML = 0;
     }
 
+    var timerId
+
     function counter(){
-        var count = 60;
-        timer.innerHTML = 60;
-        var timerId = setInterval(function(){
+        var count = 300;
+        timer.innerHTML = count;
+        timerId = setInterval(function(){
             count --;
 
             if(count == 0){
-                clearInterval(timerId);
                 ResetButton();
             }
             timer.innerHTML = count;
