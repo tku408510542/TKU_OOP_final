@@ -121,11 +121,12 @@ h4{
 
 /* #download-grid{
   border-top-style:dashed;
-
+  
 } */
 
 #timer-grid{
   color:#ffb20a;
+  border-width:1px;
   width:100px;
   height:45px;
   border:3px;
