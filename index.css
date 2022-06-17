@@ -119,9 +119,25 @@ h4{
   filter:alpha(opacity=0);
 }
 
-#download-grid{
+/* #download-grid{
   border-top-style:dashed;
+
+} */
+
+#timer-grid{
+  color:#ffb20a;
+  width:100px;
+  height:45px;
+  border:3px;
+  border-style:solid;
+  position:absolute;
+  top:265px;
+  left:220px;
 }
+#timer-text{
+  color:red;
+}
+
 
 /* div#main UL LI {
   padding: 10px;
