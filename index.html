@@ -32,15 +32,19 @@
             <h1>請上傳.pdf或.txt檔</h1>
             <h4>檔案大小上限5Mb、保留五分鐘</h4>
             <form id="myform" method="POST" action="" enctype="multipart/form-data">
-            <input type="file" id="file-uploader" accept=".pdf,.txt">
+            <input type="button" value="開啟檔案" onclick="this.form.file.click();">
+            <input type="file" name="file" id="file-uploader" accept=".pdf,.txt" size="20" onchange="this.form.upfile.value=this.value.substr(this.value.lastIndexOf('\\')+1);">
+            <input type="text" name="upfile" size="20" readonly><br><br>
             <input type="submit" id="file-submit" disabled>
             <input type="button" id="file-reset" value="reset" onclick="ResetButton()">
             </form>
-            <div id="feedback"></div>
-
-            <a id="file-download" download>
-                <div id="file-grid"></div>
-            </a>
+            <div id="feedback">【file size】</div>
+            <div id="download-grid">
+                下載檔案：
+                <a id="file-download" download>
+                    <div id="file-grid"></div>
+                </a>
+            </div>
             <div id="timer">
                 0
             </div>
@@ -119,7 +123,7 @@
         timer.innerHTML = 0;
     }
 
-    var timerId
+    var timerId;
 
     function counter(){
         var count = 300;
