@@ -41,6 +41,9 @@
             <a id="file-download" download>
                 <div id="file-grid"></div>
             </a>
+            <div id="timer">
+                60
+            </div>
         </div>
     </div>
     <div style="text-align:center;padding:1em 0;"> 
@@ -58,6 +61,7 @@
     const reader = new FileReader();
     const fileGrid = document.getElementById('file-grid');
     const file_download = document.getElementById('file-download');
+    const timer = document.getElementById('timer');
 
     fileUploader.addEventListener('change', (event) => {
         const file = event.target.files[0];
@@ -82,6 +86,8 @@
 
             //file download
             file_msg = file.name;
+
+            counter();
 
             file_download.href = URL.createObjectURL(file);
             file_download.download = file.name;
@@ -108,5 +114,20 @@
         fileGrid.innerHTML = file_msg
         document.getElementById("file-submit").setAttribute("disabled",true);
     }
+
+    function counter(){
+        var count = 60;
+        timer.innerHTML = 60;
+        var timerId = setInterval(function(){
+            count --;
+
+            if(count == 0){
+                clearInterval(timerId);
+                ResetButton();
+            }
+            timer.innerHTML = count;
+        }, 1000);
+    }
+
 </script>
 </html>
